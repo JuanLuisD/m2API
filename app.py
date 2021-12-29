@@ -8,7 +8,7 @@ app = Flask(__name__)
 def index():
     name = request.args.get("name")
     if not name:
-        return jsonify({"status":"error"})
+        return jsonify({"status":"Please provide a name"})
 
     response = {"date" : f"Hello, {name} !"}
     return jsonify(response)
