@@ -1,14 +1,24 @@
-from flask import Flask, jsonify, request
-
-# Initialize app 
-app = Flask(__name__)
-
-# Define what the app does 
-@app.get("/greet")
-def index():
-    name = request.args.get("name")
-    if not name:
-        return jsonify({"status":"Please provide a name"})
-
-    response = {"date" : f"Hello, {name} !"}
-    return jsonify(response)
+from flask import Flask, jsonify, request 
+ 
+# Initialize app  
+app = Flask(__name__) 
+ 
+# Define what the app does  
+@app.get("/greet") 
+def index(): 
+    fname = request.args.get("fname") 
+    lname = request.args.get("lname") 
+ 
+    if not fname and not lname: 
+        return jsonify({"status":"error"}) 
+    elif fname and not lname: 
+        response = {"data" : f"Hello, {fname} !" } 
+    elif not fname and lname : 
+        response = {"data" : f"Helo, Mr. {lname} !"
+} 
+    else: 
+        response = {"data" : f"Is your name {fname}
+ {lname} ?"} 
+ 
+    return jsonify(response)
+ 
